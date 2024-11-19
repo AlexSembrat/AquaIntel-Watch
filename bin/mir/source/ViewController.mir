@@ -1,0 +1,115 @@
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 7; ]
+import Toybox.BluetoothLowEnergy;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 8; ]
+import Toybox.Lang;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 9; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 11; ]
+class ViewController{
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 11; ]
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 11; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 12; @position = 16; ]
+    private
+    var _modelFactory as DataModelFactory;
+    //! Constructor
+    //! @param modelFactory Factory to create models
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 16; ]
+    public
+    function initialize(modelFactory as DataModelFactory) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_16_65_18_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc" 17 8 ]
+        %tmp.2 = lgetv %modelFactory;
+        putv self :_modelFactory %tmp.2;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_16_65_18_4_stop:
+    }
+    //! Return the initial views for the app
+    //! @return Array Pair [View, InputDelegate]
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 22; ]
+    public
+    function getInitialView() as [Views] or [Views, InputDelegates] {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_22_75_26_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc" 23 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_22_75_26_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_22_75_26_4_stop" ]
+        %scanDataModel.1 = local;
+        %tmp.2 = getv ? :_modelFactory;
+        %tmp.3 = getv function %tmp.2 :getScanDataModel;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        lputv %scanDataModel.1 %tmp.4;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc" 25 8 ]
+        %tmp.5 = newa 2;
+        %tmp.9 = getm $;
+        %tmp.10 = getv %tmp.9 :ScanView;
+        %tmp.12 = lgetv %scanDataModel.1;
+        %tmp.6 = newc %tmp.10 (%tmp.12);
+        %tmp.13 = dup %tmp.5;
+        %tmp.14 = aputv %tmp.13 0 %tmp.6;
+        %tmp.18 = getm $;
+        %tmp.19 = getv %tmp.18 :ScanDelegate;
+        %tmp.21 = lgetv %scanDataModel.1;
+        %tmp.23 = self;
+        %tmp.15 = newc %tmp.19 (%tmp.21, %tmp.23);
+        %tmp.24 = dup %tmp.14;
+        %tmp.25 = aputv %tmp.24 1 %tmp.15;
+        ret %tmp.25;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_22_75_26_4_stop:
+    }
+    //! Push the scan menu view
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 29; ]
+    public
+    function pushScanMenu() as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_29_43_31_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc" 30 8 ]
+        %tmp.1 = getm $.Toybox.WatchUi;
+        %tmp.2 = getv function %tmp.1 :pushView;
+        %tmp.6 = getm $;
+        %tmp.7 = getv %tmp.6 :Rez;
+        %tmp.8 = getv %tmp.7 :Menus;
+        %tmp.9 = getv function ? %tmp.8 :MainMenu;
+        %tmp.3 = newc %tmp.9 ();
+        %tmp.13 = getm $;
+        %tmp.14 = getv %tmp.13 :ScanMenuDelegate;
+        %tmp.10 = newc %tmp.14 ();
+        %tmp.15 = getm $.Toybox.WatchUi;
+        %tmp.16 = getv %tmp.15 :SLIDE_UP;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.10, %tmp.16);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_29_43_31_4_stop:
+    }
+    //! Push the device view
+    //! @param scanResult The scan result for the device view to push
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 35; ]
+    public
+    function pushDeviceView(scanResult as ScanResult) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_35_69_39_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc" 36 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_35_69_39_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_35_69_39_4_stop" ]
+        %deviceDataModel.1 = local;
+        %tmp.2 = getv ? :_modelFactory;
+        %tmp.3 = getv function %tmp.2 :getDeviceDataModel;
+        %tmp.5 = lgetv %scanResult;
+        %tmp.6 = invoke %tmp.2 %tmp.3(%tmp.5);
+        lputv %deviceDataModel.1 %tmp.6;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc" 38 8 ]
+        %tmp.7 = getm $.Toybox.WatchUi;
+        %tmp.8 = getv function %tmp.7 :pushView;
+        %tmp.12 = getm $;
+        %tmp.13 = getv %tmp.12 :DeviceView;
+        %tmp.15 = lgetv %deviceDataModel.1;
+        %tmp.9 = newc %tmp.13 (%tmp.15);
+        %tmp.19 = getm $;
+        %tmp.20 = getv %tmp.19 :DeviceDelegate;
+        %tmp.22 = lgetv %deviceDataModel.1;
+        %tmp.16 = newc %tmp.20 (%tmp.22);
+        %tmp.23 = getm $.Toybox.WatchUi;
+        %tmp.24 = getv %tmp.23 :SLIDE_UP;
+        invoke %tmp.7 %tmp.8(%tmp.9, %tmp.16, %tmp.24);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ViewController_mc_35_69_39_4_stop:
+    }
+}
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ViewController.mc"; @line = 7; ]
+<init> {
+}

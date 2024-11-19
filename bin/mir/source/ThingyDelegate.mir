@@ -1,0 +1,416 @@
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 7; ]
+import Toybox.BluetoothLowEnergy;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 8; ]
+import Toybox.Lang;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 9; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 11; ]
+class ThingyDelegate extends BluetoothLowEnergy.BleDelegate{
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 11; ]
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 11; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 12; @position = 16; ]
+    private
+    var _profileManager as ProfileManager;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 14; @position = 16; ]
+    private
+    var _onScanResult as WeakReference or Null;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 15; @position = 16; ]
+    private
+    var _onConnection as WeakReference or Null;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 16; @position = 16; ]
+    private
+    var _onDescriptorWrite as WeakReference or Null;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 17; @position = 16; ]
+    private
+    var _onCharChanged as WeakReference or Null;
+    //! Constructor
+    //! @param profileManager The profile manager
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 21; ]
+    public
+    function initialize(profileManager as ProfileManager) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_21_65_24_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 22 8 ]
+        %tmp.2 = getv ? :BleDelegate;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 23 8 ]
+        %tmp.5 = lgetv %profileManager;
+        putv self :_profileManager %tmp.5;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_21_65_24_4_stop:
+    }
+    //! Handle new scan results being received
+    //! @param scanResults An iterator of new scan results
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 40; ]
+    public
+    function onScanResults(scanResults as Iterator) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_40_67_50_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 41 8 ]
+        for @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_test @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_incr @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_init:
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_begin" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_end" ]
+        %result.1 = local;
+        %tmp.1 = lgetv %scanResults;
+        %tmp.2 = getv function %tmp.1 :next;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %result.1 %tmp.3;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_test:
+        %tmp.5 = lgetv %result.1;
+        %tmp.6 = null;
+        %tmp.7 = ne %tmp.5 %tmp.6;
+        bf %tmp.7 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_begin:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_91_49_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 42 12 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_42_12_48_12_if_stmt:
+        %tmp.9 = lgetv %result.1;
+        %tmp.10 = as %tmp.9 { (!Null) };
+        %tmp.12 = getv ? :ScanResult;
+        %tmp.13 = isa %tmp.10 %tmp.12;
+        bf %tmp.13 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_42_12_48_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_42_12_48_12_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_42_46_48_12_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 44 16 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_44_16_47_16_if_stmt:
+        %tmp.14 = self;
+        %tmp.15 = getv function %tmp.14 :contains;
+        %tmp.16 = lgetv %result.1;
+        %tmp.17 = as %tmp.16 { (ScanResult) && (!Null) };
+        %tmp.18 = getv function %tmp.17 :getServiceUuids;
+        %tmp.19 = invoke %tmp.17 %tmp.18();
+        %tmp.21 = getv ? :_profileManager;
+        %tmp.22 = getv %tmp.21 :NANO_SERVICE_UUID;
+        %tmp.23 = invoke %tmp.14 %tmp.15(%tmp.19, %tmp.22);
+        bf %tmp.23 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_44_16_47_16_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_44_16_47_16_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_44_91_47_16_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 46 20 ]
+        %tmp.24 = self;
+        %tmp.25 = getv function %tmp.24 :broadcastScanResult;
+        %tmp.27 = lgetv %result.1;
+        %tmp.28 = as %tmp.27 { (ScanResult) && (!Null) };
+        invoke %tmp.24 %tmp.25(%tmp.28);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_44_91_47_16_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_44_16_47_16_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_44_16_47_16_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_42_46_48_12_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_42_12_48_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_42_12_48_12_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_91_49_8_stop:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_incr:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 41 ]
+        %tmp.29 = lgetv %scanResults;
+        %tmp.30 = getv function %tmp.29 :next;
+        %tmp.31 = invoke %tmp.29 %tmp.30();
+        lputv %result.1 %tmp.31;
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_test;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_41_8_49_8_for_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_40_67_50_4_stop:
+    }
+    //! Handle pairing and connecting to a device
+    //! @param device The device state that was changed
+    //! @param state The state of the connection
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 55; ]
+    public
+    function onConnectedStateChanged(device as Device, state as ConnectionState) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_55_96_62_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 56 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_55_96_62_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_55_96_62_4_stop" ]
+        %onConnection.1 = local;
+        %tmp.2 = getv ? :_onConnection;
+        lputv %onConnection.1 %tmp.2;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 57 8 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_57_8_61_8_if_stmt:
+        %tmp.3 = null;
+        %tmp.5 = lgetv %onConnection.1;
+        %tmp.6 = ne %tmp.3 %tmp.5;
+        bf %tmp.6 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_57_8_61_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_57_8_61_8_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_57_34_61_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 58 12 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_58_12_60_12_if_stmt:
+        %tmp.7 = lgetv %onConnection.1;
+        %tmp.8 = as %tmp.7 { (!Null) };
+        %tmp.9 = getv function %tmp.8 :stillAlive;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        bf %tmp.10 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_58_12_60_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_58_12_60_12_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_58_43_60_12_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 59 16 ]
+        %tmp.11 = lgetv %onConnection.1;
+        %tmp.12 = as %tmp.11 { (!Null) };
+        %tmp.13 = getv function %tmp.12 :get;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        %tmp.15 = as %tmp.14 DeviceDataModel;
+        %tmp.16 = getv function %tmp.15 :procConnection;
+        %tmp.18 = lgetv %device;
+        invoke %tmp.15 %tmp.16(%tmp.18);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_58_43_60_12_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_58_12_60_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_58_12_60_12_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_57_34_61_8_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_57_8_61_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_57_8_61_8_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_55_96_62_4_stop:
+    }
+    //! Handle the completion of a write operation on a descriptor
+    //! @param descriptor The descriptor that was written
+    //! @param status The BluetoothLowEnergy status indicating the result of the operation
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 67; ]
+    public
+    function onDescriptorWrite(descriptor as Descriptor, status as Status) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_67_90_74_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 68 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_67_90_74_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_67_90_74_4_stop" ]
+        %onDescriptorWrite.1 = local;
+        %tmp.2 = getv ? :_onDescriptorWrite;
+        lputv %onDescriptorWrite.1 %tmp.2;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 69 8 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_69_8_73_8_if_stmt:
+        %tmp.3 = null;
+        %tmp.5 = lgetv %onDescriptorWrite.1;
+        %tmp.6 = ne %tmp.3 %tmp.5;
+        bf %tmp.6 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_69_8_73_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_69_8_73_8_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_69_39_73_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 70 12 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_70_12_72_12_if_stmt:
+        %tmp.7 = lgetv %onDescriptorWrite.1;
+        %tmp.8 = as %tmp.7 { (!Null) };
+        %tmp.9 = getv function %tmp.8 :stillAlive;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        bf %tmp.10 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_70_12_72_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_70_12_72_12_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_70_48_72_12_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 71 16 ]
+        %tmp.11 = lgetv %onDescriptorWrite.1;
+        %tmp.12 = as %tmp.11 { (!Null) };
+        %tmp.13 = getv function %tmp.12 :get;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        %tmp.15 = as %tmp.14 EnvironmentProfileModel;
+        %tmp.16 = getv function %tmp.15 :onDescriptorWrite;
+        %tmp.18 = lgetv %descriptor;
+        %tmp.20 = lgetv %status;
+        invoke %tmp.15 %tmp.16(%tmp.18, %tmp.20);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_70_48_72_12_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_70_12_72_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_70_12_72_12_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_69_39_73_8_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_69_8_73_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_69_8_73_8_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_67_90_74_4_stop:
+    }
+    //! Handle a characteristic being changed
+    //! @param char The characteristic that changed
+    //! @param value The updated value of the characteristic
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 79; ]
+    public
+    function onCharacteristicChanged(char as Characteristic, value as ByteArray) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_79_96_86_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 80 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_79_96_86_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_79_96_86_4_stop" ]
+        %onCharChanged.1 = local;
+        %tmp.2 = getv ? :_onCharChanged;
+        lputv %onCharChanged.1 %tmp.2;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 81 8 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_81_8_85_8_if_stmt:
+        %tmp.3 = null;
+        %tmp.5 = lgetv %onCharChanged.1;
+        %tmp.6 = ne %tmp.3 %tmp.5;
+        bf %tmp.6 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_81_8_85_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_81_8_85_8_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_81_35_85_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 82 12 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_82_12_84_12_if_stmt:
+        %tmp.7 = lgetv %onCharChanged.1;
+        %tmp.8 = as %tmp.7 { (!Null) };
+        %tmp.9 = getv function %tmp.8 :stillAlive;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        bf %tmp.10 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_82_12_84_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_82_12_84_12_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_82_44_84_12_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 83 16 ]
+        %tmp.11 = lgetv %onCharChanged.1;
+        %tmp.12 = as %tmp.11 { (!Null) };
+        %tmp.13 = getv function %tmp.12 :get;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        %tmp.15 = as %tmp.14 EnvironmentProfileModel;
+        %tmp.16 = getv function %tmp.15 :onCharacteristicChanged;
+        %tmp.18 = lgetv %char;
+        %tmp.20 = lgetv %value;
+        invoke %tmp.15 %tmp.16(%tmp.18, %tmp.20);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_82_44_84_12_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_82_12_84_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_82_12_84_12_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_81_35_85_8_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_81_8_85_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_81_8_85_8_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_79_96_86_4_stop:
+    }
+    //! Store a new model to manage scan results
+    //! @param model The model containing scan results
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 90; ]
+    public
+    function notifyScanResult(model as ScanDataModel) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_90_69_92_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 91 8 ]
+        %tmp.1 = lgetv %model;
+        %tmp.2 = getv function %tmp.1 :weak;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        putv self :_onScanResult %tmp.3;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_90_69_92_4_stop:
+    }
+    //! Store a new model to manage device data connections
+    //! @param model The model for device data
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 96; ]
+    public
+    function notifyConnection(model as DeviceDataModel) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_96_71_98_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 97 8 ]
+        %tmp.1 = lgetv %model;
+        %tmp.2 = getv function %tmp.1 :weak;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        putv self :_onConnection %tmp.3;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_96_71_98_4_stop:
+    }
+    //! Store a new model to handle descriptor writes
+    //! @param model The model for descriptors
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 102; ]
+    public
+    function notifyDescriptorWrite(model as EnvironmentProfileModel) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_102_84_104_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 103 8 ]
+        %tmp.1 = lgetv %model;
+        %tmp.2 = getv function %tmp.1 :weak;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        putv self :_onDescriptorWrite %tmp.3;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_102_84_104_4_stop:
+    }
+    //! Store a new model to handle characteristic changes
+    //! @param model The model for characteristics
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 108; ]
+    public
+    function notifyCharacteristicChanged(model as EnvironmentProfileModel) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_108_90_110_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 109 8 ]
+        %tmp.1 = lgetv %model;
+        %tmp.2 = getv function %tmp.1 :weak;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        putv self :_onCharChanged %tmp.3;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_108_90_110_4_stop:
+    }
+    //! Broadcast a new scan result
+    //! @param scanResult The new scan result
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 114; ]
+    private
+    function broadcastScanResult(scanResult as ScanResult) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_114_75_121_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 115 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_114_75_121_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_114_75_121_4_stop" ]
+        %onScanResult.1 = local;
+        %tmp.2 = getv ? :_onScanResult;
+        lputv %onScanResult.1 %tmp.2;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 116 8 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_116_8_120_8_if_stmt:
+        %tmp.3 = null;
+        %tmp.5 = lgetv %onScanResult.1;
+        %tmp.6 = ne %tmp.3 %tmp.5;
+        bf %tmp.6 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_116_8_120_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_116_8_120_8_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_116_34_120_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 117 12 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_117_12_119_12_if_stmt:
+        %tmp.7 = lgetv %onScanResult.1;
+        %tmp.8 = as %tmp.7 { (!Null) };
+        %tmp.9 = getv function %tmp.8 :stillAlive;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        bf %tmp.10 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_117_12_119_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_117_12_119_12_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_117_43_119_12_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 118 16 ]
+        %tmp.11 = lgetv %onScanResult.1;
+        %tmp.12 = as %tmp.11 { (!Null) };
+        %tmp.13 = getv function %tmp.12 :get;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        %tmp.15 = as %tmp.14 ScanDataModel;
+        %tmp.16 = getv function %tmp.15 :procScanResult;
+        %tmp.18 = lgetv %scanResult;
+        invoke %tmp.15 %tmp.16(%tmp.18);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_117_43_119_12_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_117_12_119_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_117_12_119_12_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_116_34_120_8_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_116_8_120_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_116_8_120_8_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_114_75_121_4_stop:
+    }
+    //! Get whether the iterator contains a specific uuid
+    //! @param iter Iterator of uuid objects
+    //! @param obj Uuid to search for
+    //! @return true if object found, false otherwise
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 127; ]
+    private
+    function contains(iter as Iterator, obj as Uuid) as Boolean {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_127_72_136_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 128 8 ]
+        for @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_test @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_incr @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_init:
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_begin" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_end" ]
+        %uuid.1 = local;
+        %tmp.1 = lgetv %iter;
+        %tmp.2 = getv function %tmp.1 :next;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %uuid.1 %tmp.3;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_test:
+        %tmp.5 = lgetv %uuid.1;
+        %tmp.6 = null;
+        %tmp.7 = ne %tmp.5 %tmp.6;
+        bf %tmp.7 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_begin:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_71_133_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 129 12 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_129_12_131_12_if_stmt:
+        %tmp.8 = lgetv %uuid.1;
+        %tmp.9 = as %tmp.8 { (!Null) };
+        %tmp.10 = getv function %tmp.9 :equals;
+        %tmp.12 = lgetv %obj;
+        %tmp.13 = invoke %tmp.9 %tmp.10(%tmp.12);
+        bf %tmp.13 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_129_12_131_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_129_12_131_12_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_129_34_131_12_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 130 16 ]
+        %tmp.14 = true;
+        ret %tmp.14;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_129_34_131_12_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_129_12_131_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_129_12_131_12_if_end:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 132 12 ]
+        %tmp.16 = getv ? :System;
+        %tmp.17 = getv function %tmp.16 :println;
+        %tmp.18 = "uuid=";
+        %tmp.20 = lgetv %uuid.1;
+        %tmp.21 = as %tmp.20 { (!Null) };
+        %tmp.22 = add %tmp.18 %tmp.21;
+        invoke %tmp.16 %tmp.17(%tmp.22);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_71_133_8_stop:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_incr:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 128 ]
+        %tmp.23 = lgetv %iter;
+        %tmp.24 = getv function %tmp.23 :next;
+        %tmp.25 = invoke %tmp.23 %tmp.24();
+        lputv %uuid.1 %tmp.25;
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_test;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_128_8_133_8_for_end:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc" 135 8 ]
+        %tmp.26 = false;
+        ret %tmp.26;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ThingyDelegate_mc_127_72_136_4_stop:
+    }
+}
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ThingyDelegate.mc"; @line = 7; ]
+<init> {
+}

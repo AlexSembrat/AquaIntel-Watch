@@ -1,0 +1,60 @@
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 7; ]
+import Toybox.Lang;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 8; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 10; ]
+class DeviceDelegate extends WatchUi.BehaviorDelegate{
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 10; ]
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 10; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 11; @position = 16; ]
+    private
+    var _deviceDataModel as DeviceDataModel;
+    //! Constructor
+    //! @param deviceDataModel The device data model
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 15; ]
+    public
+    function initialize(deviceDataModel as DeviceDataModel) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_DeviceDelegate_mc_15_67_20_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc" 16 8 ]
+        %tmp.2 = getv ? :BehaviorDelegate;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc" 18 8 ]
+        %tmp.5 = lgetv %deviceDataModel;
+        putv self :_deviceDataModel %tmp.5;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc" 19 8 ]
+        %tmp.7 = getv ? :_deviceDataModel;
+        %tmp.8 = getv function %tmp.7 :pair;
+        invoke %tmp.7 %tmp.8();
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_DeviceDelegate_mc_15_67_20_4_stop:
+    }
+    //! Handle the back behavior
+    //! @return true if handled, false otherwise
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 24; ]
+    public
+    function onBack() as Boolean {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_DeviceDelegate_mc_24_40_28_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc" 25 8 ]
+        %tmp.2 = getv ? :_deviceDataModel;
+        %tmp.3 = getv function %tmp.2 :unpair;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc" 26 8 ]
+        %tmp.4 = getm $.Toybox.WatchUi;
+        %tmp.5 = getv function %tmp.4 :popView;
+        %tmp.6 = getm $.Toybox.WatchUi;
+        %tmp.7 = getv %tmp.6 :SLIDE_DOWN;
+        invoke %tmp.4 %tmp.5(%tmp.7);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc" 27 8 ]
+        %tmp.8 = true;
+        ret %tmp.8;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_DeviceDelegate_mc_24_40_28_4_stop:
+    }
+}
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\DeviceDelegate.mc"; @line = 7; ]
+<init> {
+}

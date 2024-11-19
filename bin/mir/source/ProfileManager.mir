@@ -1,0 +1,76 @@
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 7; ]
+import Toybox.BluetoothLowEnergy;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 9; ]
+class ProfileManager{
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 9; ]
+    <init> {
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc" 18 17 ]
+        %tmp.1 = getm $.Toybox.BluetoothLowEnergy;
+        %tmp.2 = getv function %tmp.1 :longToUuid;
+        %tmp.3 = 0x1234567812345678L;
+        %tmp.4 = 0x123456789ABCDEF0L;
+        %tmp.5 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4);
+        putv self :NANO_SERVICE_UUID %tmp.5;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc" 19 17 ]
+        %tmp.6 = getm $.Toybox.BluetoothLowEnergy;
+        %tmp.7 = getv function %tmp.6 :longToUuid;
+        %tmp.8 = 0xABCDEF0112345678L;
+        %tmp.9 = 0x123456789ABCDEF0L;
+        %tmp.10 = invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9);
+        putv self :CUSTOM_CHARACTERISTIC_UUID %tmp.10;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc" 38 18 ]
+        %tmp.11 = newd 2;
+        %tmp.13 = const :uuid;
+        %tmp.15 = getv ? :NANO_SERVICE_UUID;
+        %tmp.16 = dup %tmp.11;
+        %tmp.17 = aputv %tmp.16 %tmp.13 %tmp.15;
+        %tmp.19 = const :characteristics;
+        %tmp.20 = newa 1;
+        %tmp.21 = newd 2;
+        %tmp.23 = const :uuid;
+        %tmp.25 = getv ? :CUSTOM_CHARACTERISTIC_UUID;
+        %tmp.26 = dup %tmp.21;
+        %tmp.27 = aputv %tmp.26 %tmp.23 %tmp.25;
+        %tmp.29 = const :descriptors;
+        %tmp.30 = newa 1;
+        %tmp.31 = getm $.Toybox.BluetoothLowEnergy;
+        %tmp.32 = getv function %tmp.31 :cccdUuid;
+        %tmp.33 = invoke %tmp.31 %tmp.32();
+        %tmp.34 = dup %tmp.30;
+        %tmp.35 = aputv %tmp.34 0 %tmp.33;
+        %tmp.36 = dup %tmp.27;
+        %tmp.37 = aputv %tmp.36 %tmp.29 %tmp.35;
+        %tmp.38 = dup %tmp.20;
+        %tmp.39 = aputv %tmp.38 0 %tmp.37;
+        %tmp.40 = dup %tmp.17;
+        %tmp.41 = aputv %tmp.40 %tmp.19 %tmp.39;
+        putv self :_nanoProfileDef %tmp.41;
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 18; @position = 17; ]
+    public
+    const NANO_SERVICE_UUID;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 19; @position = 17; ]
+    public
+    const CUSTOM_CHARACTERISTIC_UUID;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 38; @position = 18; ]
+    private
+    const _nanoProfileDef;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 52; ]
+    public
+    function registerProfiles() as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ProfileManager_mc_52_47_54_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc" 53 4 ]
+        %tmp.1 = getm $.Toybox.BluetoothLowEnergy;
+        %tmp.2 = getv function %tmp.1 :registerProfile;
+        %tmp.4 = getv ? :_nanoProfileDef;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_ProfileManager_mc_52_47_54_4_stop:
+    }
+}
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\ProfileManager.mc"; @line = 7; ]
+<init> {
+}
