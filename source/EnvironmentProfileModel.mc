@@ -18,6 +18,8 @@ class EnvironmentProfileModel {
     private var _humidity as Numeric?;
     private var _eco2 as Numeric?;
     private var _tvoc as Numeric?;
+    
+    private var _value as Numeric?;
 
     //! Constructor
     //! @param delegate The BLE delegate for the model
@@ -102,8 +104,11 @@ class EnvironmentProfileModel {
     // }
 
     public function onCharacteristicChanged(char as Characteristic, value as ByteArray) as Void {
+        System.println("Characteristic Changed UUID: " + char.getUuid());
+        System.println("Raw Value: " + value);
         switch (char.getUuid()) {
             case _profileManager.CUSTOM_CHARACTERISTIC_UUID:  // Handle your custom characteristic
+                // _eco2 = value;
                 processCustomData(value);
                 break;
         }
@@ -140,6 +145,7 @@ class EnvironmentProfileModel {
     //! Get the ECO2 value
     //! @return The ECO2 value
     public function getEco2() as Numeric? {
+        System.println("value="+_eco2);
         return _eco2;
     }
 
@@ -147,6 +153,11 @@ class EnvironmentProfileModel {
     //! @return The TVOC value
     public function getTvoc() as Numeric? {
         return _tvoc;
+    }
+
+    public function getValue() as Numeric? {
+        System.println("value1="+_value);
+        return _value;
     }
 
     //! Write the next notification to the descriptor
@@ -204,10 +215,24 @@ class EnvironmentProfileModel {
         WatchUi.requestUpdate();
     }
 
+    // private function processCustomData(value as ByteArray) as Void {
+    //     // Assuming the value is a numeric value, decode it
+    //     _value = value.decodeNumber(Lang.NUMBER_FORMAT_UINT16, {});
+    //     System.println("decodedValue="+_value);
+    //     // Store or use the custom value as needed
+    //     WatchUi.requestUpdate();  // Refresh UI
+
+        
+    // }
+
     private function processCustomData(value as ByteArray) as Void {
-        // Assuming the value is a numeric value, decode it
-        var customValue = value.decodeNumber(Lang.NUMBER_FORMAT_UINT16, {});
-        // Store or use the custom value as needed
+        if (value.size() != 2) { // Expecting 1 byte
+            System.println("Unexpected data size: " + value.size());
+            return;
+        }
+        _value = value.decodeNumber(Lang.NUMBER_FORMAT_UINT16, {});
+        System.println("Decoded value: " + _value);
         WatchUi.requestUpdate();  // Refresh UI
     }
+
 }

@@ -7,6 +7,7 @@
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
+import Toybox.Math;
 
 class DeviceView extends WatchUi.View {
     private var _dataModel as DeviceDataModel;
@@ -38,9 +39,9 @@ class DeviceView extends WatchUi.View {
         if (_dataModel.isConnected() && (profile != null)) {
             drawIndicator(dc, $.Rez.Drawables.TempInd, profile.getTemperature(), "%.2f", "°C", 0);
             drawIndicator(dc, $.Rez.Drawables.PressureInd, profile.getPressure(), "%.2f", "hPa", 1);
-            drawIndicator(dc, $.Rez.Drawables.HumidityInd, profile.getHumidity(), "%d", "%", 2);
-            drawIndicator(dc, $.Rez.Drawables.Co2Ind, profile.getEco2(), "%d", "ppm", 3);
-            drawIndicator(dc, $.Rez.Drawables.LeafInd, profile.getTvoc(), "%d", "ppb", 4);
+            drawIndicator(dc, $.Rez.Drawables.HumidityInd, profile.getEco2(), "%d", "%", 2);
+            drawIndicator(dc, $.Rez.Drawables.Co2Ind, profile.getValue(), "%d", "ppm", 3);
+            drawIndicator(dc, $.Rez.Drawables.LeafInd, Math.rand() % 900 + 100, "%d", "ppb", 4);
         }
     }
 
