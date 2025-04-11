@@ -1,0 +1,80 @@
+<layouts>
+    <layout id="Summary">
+        <label id="Title" text="@Strings.titleLabel" x="center" y="0" font="Graphics.FONT_TINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLACK" />
+x="280" y="140
+        <label id="hrLabel" text="@Strings.hrLabel" x="283" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="elevation1" text="@Strings.elevation" x="283" y="280" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="pmLabel" text="@Strings.distanceLabel" x="133" y="280" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="waterLabel" text="@Strings.waterLabel" x="133" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="timeLabel" text="@Strings.timeLabel" x="center" y="30" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        
+        <label id="elevation" x="283" y="310" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="distance" x="133" y="310" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="water" text="@Strings.loading" x="133" y="165" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="hr" text="@Strings.loading" x="283" y="165" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="timer" x="center" y="60" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        
+        <label id="pm25Units" text="@Strings.microLabel" x="133" y="230" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="distanceunits" text="@Strings.ppmLabel" x="133" y="360" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="hrUnits" text="@Strings.hrUnits" x="283" y="230" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="elevationunits" text="@Strings.ppmLabel" x="283" y="360" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+
+    </layout>
+    <layout id="Data">
+        <label id="temp" x="center" y="60" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="hum" x="center" y="310" font="Graphics.FONT_LARGE" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="pm25" text="@Strings.loading" x="110" y="165" font="Graphics.FONT_NUMBER_MILD" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="co2" text="@Strings.loading" x="290" y="165" font="Graphics.FONT_NUMBER_MILD" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        
+        <label id="waterLabel" text="@Strings.waterLabel" x="100" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="humLabel" text="@Strings.humLabel" x="280" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="distanceLabel" text="@Strings.distanceLabel" x="280" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="tempLabel" text="@Strings.tempLabel" x="center" y="30" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        
+        <label id="pm25Units" text="@Strings.ppmLabel" x="100" y="230" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="co2Units" text="@Strings.ppmLabel" x="280" y="230" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="tempUnits" text="@Strings.tempUnits" x="100" y="230" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="humUnits" text="@Strings.humUnits" x="280" y="230" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+    </layout>
+   <layout id="Score">
+        <label id="summaryLabel" text="@Strings.summary" x="center" y="40" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="endlabel" text="@Strings.end" x="center" y="360" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+
+
+        <label id="timeLabel" text="@Strings.timeLbl" x="190" y="100" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE" />
+        <label id="maxPM25Label" text="@Strings.maxpm25" x="190" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE" />
+        <label id="AQHILabel" text="@Strings.AQHILabel" x="190" y="180" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE" />
+        <label id="personalAQHILabel" text="@Strings.personalAQHIabel" x="190" y="220" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE" />
+        <label id="averageHR" text="@Strings.averageHR" x="190" y="260" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE" />
+
+
+        <label id="time" x="210" y="100" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+        <label id="water" x="210" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+        <label id="distance" x="210" y="180" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+        <label id="elevation" x="210" y="220" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+        <label id="hr" x="210" y="260" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+
+        <label id="microLabel" text="@Strings.microLabel" x="300" y="140" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+        <label id="waterunits" text="@Strings.ppmLabel" x="300" y="180" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+        <label id="elevationunits" text="@Strings.ppmLabel" x="300" y="220" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+        <label id="hrunits" text="@Strings.hrUnits" x="300" y="260" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+
+        <bitmap id="actionMenu" personality="
+            system_icon_dark__hint_action_menu
+            system_loc__hint_action_menu" />
+    </layout>
+    <!-- <layout id="Start">
+        
+        <bitmap id="rightTop" personality="
+            system_icon_dark__hint_button_right_top
+            system_loc__hint_button_right_top" />
+    </layout> -->
+    <layout id="UserPrompt" >
+        <label id="pAQHI" x="center" y="150" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+        <label id="blurb" text="@Strings.end" x="center" y="200" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
+   </layout>
+    <layout id="ErrorLayout">
+        <label id="Message" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" color="FFFFFF"/>
+    </layout>
+
+</layouts>

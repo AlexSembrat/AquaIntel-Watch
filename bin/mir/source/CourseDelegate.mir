@@ -1,0 +1,122 @@
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 7; ]
+import Toybox.Lang;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 8; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 10; ]
+class CourseDelegate extends WatchUi.BehaviorDelegate{
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 10; ]
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 10; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 11; @position = 16; ]
+    private
+    var _courseDataModel as CourseDataModel;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 12; @position = 16; ]
+    private
+    var _viewController as ViewController;
+    //! Constructor
+    //! @param courseDataModel The model containing the course results
+    //! @param viewController Object that controls pushing new views
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 17; ]
+    public
+    function initialize(courseDataModel as CourseDataModel, viewController as ViewController) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_17_101_22_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 18 8 ]
+        %tmp.2 = getv ? :BehaviorDelegate;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 20 8 ]
+        %tmp.5 = lgetv %courseDataModel;
+        putv self :_courseDataModel %tmp.5;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 21 8 ]
+        %tmp.7 = lgetv %viewController;
+        putv self :_viewController %tmp.7;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_17_101_22_4_stop:
+    }
+    //! Handle menu button press
+    //! @return true if handled, false otherwise
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 26; ]
+    public
+    function onMenu() as Boolean {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_26_40_29_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 27 8 ]
+        %tmp.2 = getv ? :_viewController;
+        %tmp.3 = getv function %tmp.2 :pushCourseMenu;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 28 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_26_40_29_4_stop:
+    }
+    //! Handle the select action
+    //! @return true if handled, false otherwise
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 33; ]
+    public
+    function onSelect() as Boolean {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_33_42_39_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 34 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_33_42_39_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_33_42_39_4_stop" ]
+        %displayResult.1 = local;
+        %tmp.2 = getv ? :_courseDataModel;
+        %tmp.3 = getv function %tmp.2 :getDisplayResult;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        lputv %displayResult.1 %tmp.4;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 35 8 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_35_8_37_8_if_stmt:
+        %tmp.5 = null;
+        %tmp.7 = lgetv %displayResult.1;
+        %tmp.8 = ne %tmp.5 %tmp.7;
+        bf %tmp.8 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_35_8_37_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_35_8_37_8_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_35_35_37_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 36 12 ]
+        %tmp.10 = getv ? :_viewController;
+        %tmp.11 = getv function %tmp.10 :pushDeviceView;
+        %tmp.13 = lgetv %displayResult.1;
+        %tmp.14 = as %tmp.13 { (!Null) };
+        invoke %tmp.10 %tmp.11(%tmp.14);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_35_35_37_8_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_35_8_37_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_35_8_37_8_if_end:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 38 8 ]
+        %tmp.15 = true;
+        ret %tmp.15;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_33_42_39_4_stop:
+    }
+    //! Handle next page behavior
+    //! @return true if handled, false otherwise
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 43; ]
+    public
+    function onNextPage() as Boolean {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_43_44_46_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 44 8 ]
+        %tmp.2 = getv ? :_courseDataModel;
+        %tmp.3 = getv function %tmp.2 :nextResult;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 45 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_43_44_46_4_stop:
+    }
+    //! Handle previous page behavior
+    //! @return true if handled, false otherwise
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 50; ]
+    public
+    function onPreviousPage() as Boolean {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_50_48_53_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 51 8 ]
+        %tmp.2 = getv ? :_courseDataModel;
+        %tmp.3 = getv function %tmp.2 :previousResult;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc" 52 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_CourseDelegate_mc_50_48_53_4_stop:
+    }
+}
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\CourseDelegate.mc"; @line = 7; ]
+<init> {
+}

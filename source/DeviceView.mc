@@ -8,41 +8,73 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.Math;
+import Toybox.UserProfile;
 
 class DeviceView extends WatchUi.View {
     private var _dataModel as DeviceDataModel;
-
+    var background;
+    var logo;
     //! Constructor
     //! @param dataModel The data to show
     public function initialize(dataModel as DeviceDataModel) {
         View.initialize();
 
+        var profile = UserProfile.getProfile();
+        System.println("The user was born in " + profile.birthYear);
+
         _dataModel = dataModel;
+
+        background = WatchUi.loadResource(Rez.Drawables.Mountains);
+        logo = WatchUi.loadResource(Rez.Drawables.Logo);
     }
 
     //! Update the view
     //! @param dc Device Context
     public function onUpdate(dc as Dc) as Void {
         var statusString;
-        if (_dataModel.isConnected()) {
+        var profile = _dataModel.getActiveProfile();
+
+
+        if (_dataModel.isConnected() && (profile.getValue() != null)) {
             statusString = "Connected";
         } else {
-            statusString = "Disconnected";
+            statusString = "Connecting...";
         }
 
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.clear();
 
-        dc.drawText(dc.getWidth() / 2, 15, Graphics.FONT_SMALL, statusString, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawBitmap(dc.getWidth() / 2 - 300, dc.getHeight() / 2 - 300, background);
+        dc.drawBitmap(dc.getWidth() / 2 - 75, dc.getHeight() / 2 - 210, logo);
 
-        var profile = _dataModel.getActiveProfile();
-        if (_dataModel.isConnected() && (profile != null)) {
-            drawIndicator(dc, $.Rez.Drawables.TempInd, profile.getTemperature(), "%.2f", "°C", 0);
-            drawIndicator(dc, $.Rez.Drawables.PressureInd, profile.getPressure(), "%.2f", "hPa", 1);
-            drawIndicator(dc, $.Rez.Drawables.HumidityInd, profile.getEco2(), "%d", "%", 2);
-            drawIndicator(dc, $.Rez.Drawables.Co2Ind, profile.getValue(), "%d", "ppm", 3);
-            drawIndicator(dc, $.Rez.Drawables.LeafInd, Math.rand() % 900 + 100, "%d", "ppb", 4);
+        dc.drawText(dc.getWidth() / 2, dc.getHeight() / 2 - 15, Graphics.FONT_SMALL, statusString, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, dc.getHeight() / 2 + 50, Graphics.FONT_XTINY, "AquaIntel", Graphics.TEXT_JUSTIFY_CENTER);
+
+        if (_dataModel.isConnected() && (profile != null) && (profile.getValue() != null)) {
+            dc.drawText(dc.getWidth() /2 - 100, dc.getHeight() / 2 + 114, Graphics.FONT_XTINY, "H20", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2 + 100, dc.getHeight() / 2 + 114, Graphics.FONT_XTINY, "Prediction", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() /2 - 100, dc.getHeight() / 2 + 80, Graphics.FONT_XTINY, getString(profile.getValue(),"%d"), Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2 + 100, dc.getHeight() / 2 + 80, Graphics.FONT_XTINY, getString(profile.getPrediction(),"%d"), Graphics.TEXT_JUSTIFY_CENTER);
         }
+    }
+
+
+    private function getGenderString(gender) {
+        if (gender == UserProfile.GENDER_FEMALE) {
+            return "Female";
+        } else if (gender == UserProfile.GENDER_MALE) {
+            return "Male";
+        }
+        return "Other";
+    }
+
+    private function getString(value as Numeric?, format as String){
+        var label = "";
+        if (value != null) {
+            label += value.format(format);
+            label += " ml";
+        }
+        return label;
     }
 
     //! Draw the indicator with the given bitmap and text
@@ -65,9 +97,9 @@ class DeviceView extends WatchUi.View {
             cellY = gridOffset;
             cellXOffset = 0;
         } else {
-            cell -= 3;
-            cellXOffset = dc.getWidth() / 6;
-            cellWidth = (dc.getWidth() - (2 * cellXOffset)) / 2;
+            cell = 1;
+            cellXOffset = 0;
+            cellWidth = dc.getWidth() / 3;
             cellY = gridOffset + cellHeight;
         }
 
@@ -86,5 +118,7 @@ class DeviceView extends WatchUi.View {
         dc.drawText(centerCellX, cellY + image.getHeight() - 5, Graphics.FONT_SYSTEM_XTINY, label, Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(centerCellX, cellY + image.getHeight() + dc.getFontHeight(Graphics.FONT_SYSTEM_XTINY) - 8,
             Graphics.FONT_SYSTEM_XTINY, units, Graphics.TEXT_JUSTIFY_CENTER);
+
+        // System.println()
     }
 }

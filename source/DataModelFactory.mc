@@ -16,6 +16,7 @@ class DataModelFactory {
     // Model Storage
     private var _scanDataModel as WeakReference?;
     private var _deviceDataModel as WeakReference?;
+    private var _courseDataModel as WeakReference?;
     private var _envModel as WeakReference?;
 
     //! Constructor
@@ -38,6 +39,22 @@ class DataModelFactory {
 
         var dataModel = new $.ScanDataModel(_delegate);
         _scanDataModel = dataModel.weak();
+
+        return dataModel;
+    }
+
+     //! Get a scan data model instance
+    //! @return The current scan data model or a new one
+    public function getCourseDataModel() as CourseDataModel {
+        var courseDataModel = _courseDataModel;
+        if (courseDataModel != null) {
+            if (courseDataModel.stillAlive()) {
+                return (courseDataModel.get() as CourseDataModel);
+            }
+        }
+
+        var dataModel = new $.CourseDataModel();
+        _courseDataModel = dataModel.weak();
 
         return dataModel;
     }

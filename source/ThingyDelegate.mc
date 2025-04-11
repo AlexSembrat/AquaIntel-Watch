@@ -15,6 +15,7 @@ class ThingyDelegate extends BluetoothLowEnergy.BleDelegate {
     private var _onConnection as WeakReference?;
     private var _onDescriptorWrite as WeakReference?;
     private var _onCharChanged as WeakReference?;
+    private var _onCharacteristicWrite as WeakReference?;
 
     //! Constructor
     //! @param profileManager The profile manager
@@ -73,6 +74,18 @@ class ThingyDelegate extends BluetoothLowEnergy.BleDelegate {
         }
     }
 
+    //! Handle the completion of a write operation on a descriptor
+    //! @param descriptor The descriptor that was written
+    //! @param status The BluetoothLowEnergy status indicating the result of the operation
+    public function onCharacteristicWrite(char as Characteristic, status as Status) as Void {
+        var onCharacteristicWrite = _onCharacteristicWrite;
+        if (null != onCharacteristicWrite) {
+            if (onCharacteristicWrite.stillAlive()) {
+                (onCharacteristicWrite.get() as EnvironmentProfileModel).onCharacteristicWrite(char, status);
+            }
+        }
+    }
+
     //! Handle a characteristic being changed
     //! @param char The characteristic that changed
     //! @param value The updated value of the characteristic
@@ -107,6 +120,10 @@ class ThingyDelegate extends BluetoothLowEnergy.BleDelegate {
     //! @param model The model for characteristics
     public function notifyCharacteristicChanged(model as EnvironmentProfileModel) as Void {
         _onCharChanged = model.weak();
+    }
+
+    public function notifyCharacteristicWrite(model as EnvironmentProfileModel) as Void {
+        _onCharacteristicWrite = model.weak();
     }
 
     //! Broadcast a new scan result

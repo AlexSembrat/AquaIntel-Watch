@@ -1,0 +1,220 @@
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 1; ]
+using Toybox.ActivityRecording;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 2; ]
+using Toybox.WatchUi;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 3; ]
+using Toybox.System;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 5; ]
+class EndActivityView extends WatchUi.View{
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 6; @position = 8; ]
+    var time;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 7; @position = 8; ]
+    var _averageHR;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 8; @position = 8; ]
+    var _loc = null;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 9; @position = 8; ]
+    var _water = 0;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 10; @position = 8; ]
+    var _distance = 0;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 11; @position = 8; ]
+    var _ascent = 0;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 14; ]
+    public
+    function initialize(duration, water, distance, elevation, averageHR) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_14_80_21_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 15 8 ]
+        %tmp.2 = getv ? :View;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 16 8 ]
+        %tmp.5 = lgetv %duration;
+        putv self :time %tmp.5;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 17 8 ]
+        %tmp.7 = lgetv %water;
+        putv self :_water %tmp.7;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 18 8 ]
+        %tmp.9 = lgetv %distance;
+        putv self :_distance %tmp.9;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 19 8 ]
+        %tmp.11 = lgetv %elevation;
+        putv self :_ascent %tmp.11;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 20 8 ]
+        %tmp.13 = lgetv %averageHR;
+        putv self :_averageHR %tmp.13;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_14_80_21_4_stop:
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 23; ]
+    public
+    function onLayout(dc) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_23_41_25_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 24 8 ]
+        %tmp.1 = self;
+        %tmp.2 = getv function %tmp.1 :setLayout;
+        %tmp.4 = getv ? :Rez;
+        %tmp.5 = getv %tmp.4 :Layouts;
+        %tmp.6 = getv function %tmp.5 :Score;
+        %tmp.8 = lgetv %dc;
+        %tmp.9 = invoke %tmp.5 %tmp.6(%tmp.8);
+        invoke %tmp.1 %tmp.2(%tmp.9);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_23_41_25_4_stop:
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 28; ]
+    public
+    function onUpdate(dc) {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 29 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_stop" ]
+        %view.1 = local;
+        %tmp.2 = getv ? :View;
+        %tmp.3 = getv function %tmp.2 :findDrawableById;
+        %tmp.4 = "water";
+        %tmp.5 = invoke %tmp.2 %tmp.3(%tmp.4);
+        %tmp.6 = as %tmp.5 Toybox.WatchUi.Text;
+        lputv %view.1 %tmp.6;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 30 8 ]
+        %tmp.7 = lgetv %view.1;
+        %tmp.8 = getv function %tmp.7 :setText;
+        %tmp.10 = getv ? :Lang;
+        %tmp.11 = getv function %tmp.10 :format;
+        %tmp.12 = "$1$ ";
+        %tmp.13 = newa 1;
+        %tmp.15 = getv ? :_water;
+        %tmp.16 = dup %tmp.13;
+        %tmp.17 = aputv %tmp.16 0 %tmp.15;
+        %tmp.18 = invoke %tmp.10 %tmp.11(%tmp.12, %tmp.17);
+        invoke %tmp.7 %tmp.8(%tmp.18);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 31 8 ]
+        %tmp.20 = getv ? :View;
+        %tmp.21 = getv function %tmp.20 :findDrawableById;
+        %tmp.22 = "time";
+        %tmp.23 = invoke %tmp.20 %tmp.21(%tmp.22);
+        %tmp.24 = as %tmp.23 Toybox.WatchUi.Text;
+        lputv %view.1 %tmp.24;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 32 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_stop" ]
+        %total_seconds.2 = local;
+        %tmp.26 = getv ? :time;
+        %tmp.27 = 1000;
+        %tmp.28 = div %tmp.26 %tmp.27;
+        lputv %total_seconds.2 %tmp.28;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 33 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_stop" ]
+        %minutes.3 = local;
+        %tmp.30 = lgetv %total_seconds.2;
+        %tmp.31 = 60;
+        %tmp.32 = div %tmp.30 %tmp.31;
+        lputv %minutes.3 %tmp.32;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 34 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_stop" ]
+        %seconds.4 = local;
+        %tmp.34 = lgetv %total_seconds.2;
+        %tmp.35 = 60;
+        %tmp.36 = mod %tmp.34 %tmp.35;
+        lputv %seconds.4 %tmp.36;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 35 8 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_stop" ]
+        %timeString.5 = local;
+        %tmp.38 = getv ? :Lang;
+        %tmp.39 = getv function %tmp.38 :format;
+        %tmp.40 = "$1$:$2$";
+        %tmp.41 = newa 2;
+        %tmp.43 = lgetv %minutes.3;
+        %tmp.44 = dup %tmp.41;
+        %tmp.45 = aputv %tmp.44 0 %tmp.43;
+        %tmp.46 = lgetv %seconds.4;
+        %tmp.47 = getv function %tmp.46 :format;
+        %tmp.48 = "%02d";
+        %tmp.49 = invoke %tmp.46 %tmp.47(%tmp.48);
+        %tmp.50 = dup %tmp.45;
+        %tmp.51 = aputv %tmp.50 1 %tmp.49;
+        %tmp.52 = invoke %tmp.38 %tmp.39(%tmp.40, %tmp.51);
+        lputv %timeString.5 %tmp.52;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 36 8 ]
+        %tmp.53 = lgetv %view.1;
+        %tmp.54 = getv function %tmp.53 :setText;
+        %tmp.56 = lgetv %timeString.5;
+        invoke %tmp.53 %tmp.54(%tmp.56);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 37 8 ]
+        %tmp.58 = getv ? :View;
+        %tmp.59 = getv function %tmp.58 :findDrawableById;
+        %tmp.60 = "distance";
+        %tmp.61 = invoke %tmp.58 %tmp.59(%tmp.60);
+        %tmp.62 = as %tmp.61 Toybox.WatchUi.Text;
+        lputv %view.1 %tmp.62;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 38 8 ]
+        %tmp.63 = lgetv %view.1;
+        %tmp.64 = getv function %tmp.63 :setText;
+        %tmp.66 = getv ? :Lang;
+        %tmp.67 = getv function %tmp.66 :format;
+        %tmp.68 = "$1$ ";
+        %tmp.69 = newa 1;
+        %tmp.71 = getv ? :_distance;
+        %tmp.72 = getv function %tmp.71 :format;
+        %tmp.73 = "%d";
+        %tmp.74 = invoke %tmp.71 %tmp.72(%tmp.73);
+        %tmp.75 = dup %tmp.69;
+        %tmp.76 = aputv %tmp.75 0 %tmp.74;
+        %tmp.77 = invoke %tmp.66 %tmp.67(%tmp.68, %tmp.76);
+        invoke %tmp.63 %tmp.64(%tmp.77);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 39 8 ]
+        %tmp.79 = getv ? :View;
+        %tmp.80 = getv function %tmp.79 :findDrawableById;
+        %tmp.81 = "elevation";
+        %tmp.82 = invoke %tmp.79 %tmp.80(%tmp.81);
+        %tmp.83 = as %tmp.82 Toybox.WatchUi.Text;
+        lputv %view.1 %tmp.83;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 40 8 ]
+        %tmp.84 = lgetv %view.1;
+        %tmp.85 = getv function %tmp.84 :setText;
+        %tmp.87 = getv ? :Lang;
+        %tmp.88 = getv function %tmp.87 :format;
+        %tmp.89 = "$1$ ";
+        %tmp.90 = newa 1;
+        %tmp.92 = getv ? :_ascent;
+        %tmp.93 = getv function %tmp.92 :format;
+        %tmp.94 = "%d";
+        %tmp.95 = invoke %tmp.92 %tmp.93(%tmp.94);
+        %tmp.96 = dup %tmp.90;
+        %tmp.97 = aputv %tmp.96 0 %tmp.95;
+        %tmp.98 = invoke %tmp.87 %tmp.88(%tmp.89, %tmp.97);
+        invoke %tmp.84 %tmp.85(%tmp.98);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 41 8 ]
+        %tmp.100 = getv ? :View;
+        %tmp.101 = getv function %tmp.100 :findDrawableById;
+        %tmp.102 = "hr";
+        %tmp.103 = invoke %tmp.100 %tmp.101(%tmp.102);
+        %tmp.104 = as %tmp.103 Toybox.WatchUi.Text;
+        lputv %view.1 %tmp.104;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 42 8 ]
+        %tmp.105 = lgetv %view.1;
+        %tmp.106 = getv function %tmp.105 :setText;
+        %tmp.108 = getv ? :Lang;
+        %tmp.109 = getv function %tmp.108 :format;
+        %tmp.110 = "$1$ ";
+        %tmp.111 = newa 1;
+        %tmp.113 = getv ? :_averageHR;
+        %tmp.114 = getv function %tmp.113 :format;
+        %tmp.115 = "%d";
+        %tmp.116 = invoke %tmp.113 %tmp.114(%tmp.115);
+        %tmp.117 = dup %tmp.111;
+        %tmp.118 = aputv %tmp.117 0 %tmp.116;
+        %tmp.119 = invoke %tmp.108 %tmp.109(%tmp.110, %tmp.118);
+        invoke %tmp.105 %tmp.106(%tmp.119);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc" 67 8 ]
+        %tmp.121 = getv ? :View;
+        %tmp.122 = getv function %tmp.121 :onUpdate;
+        %tmp.124 = lgetv %dc;
+        invoke %tmp.121 %tmp.122(%tmp.124);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_EndActivityView_mc_28_33_68_4_stop:
+    }
+}
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\EndActivityView.mc"; @line = 1; ]
+<init> {
+}

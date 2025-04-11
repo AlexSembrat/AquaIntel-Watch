@@ -1,0 +1,814 @@
+import Toybox.Lang;
+using Toybox.WatchUi;
+using Toybox.WatchUi as Ui;
+using Toybox.Graphics;
+using Toybox.Graphics as Gfx;
+
+module Rez {
+    module Drawables {
+        (:initialized) var Co2Ind as ResourceId;
+        (:initialized) var HumidityInd as ResourceId;
+        (:initialized) var LeafInd as ResourceId;
+        (:initialized) var PressureInd as ResourceId;
+        (:initialized) var TempInd as ResourceId;
+        (:initialized) var Otter as ResourceId;
+        (:initialized) var Mountains as ResourceId;
+        (:initialized) var Logo as ResourceId;
+        (:initialized) var actionMenu as ResourceId;
+        (:initialized) var Launcher as ResourceId;
+    } // Drawables
+
+    module Layouts {
+        function Summary(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_text_Title = new WatchUi.Text({:identifier=>"Title", :color=>Graphics.COLOR_BLACK, :locX=>(416 * 0.5), :locY=>0, :text=>$.Rez.Strings.titleLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_TINY});
+
+            var rez_cmp_local_text_hrLabel = new WatchUi.Text({:identifier=>"hrLabel", :color=>Graphics.COLOR_WHITE, :locX=>283, :locY=>140, :text=>$.Rez.Strings.hrLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_elevation1 = new WatchUi.Text({:identifier=>"elevation1", :color=>Graphics.COLOR_WHITE, :locX=>283, :locY=>280, :text=>$.Rez.Strings.elevation, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_pmLabel = new WatchUi.Text({:identifier=>"pmLabel", :color=>Graphics.COLOR_WHITE, :locX=>133, :locY=>280, :text=>$.Rez.Strings.distanceLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_waterLabel = new WatchUi.Text({:identifier=>"waterLabel", :color=>Graphics.COLOR_WHITE, :locX=>133, :locY=>140, :text=>$.Rez.Strings.waterLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_timeLabel = new WatchUi.Text({:identifier=>"timeLabel", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>30, :text=>$.Rez.Strings.timeLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_elevation = new WatchUi.Text({:identifier=>"elevation", :color=>Graphics.COLOR_WHITE, :locX=>283, :locY=>310, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_LARGE});
+
+            var rez_cmp_local_text_distance = new WatchUi.Text({:identifier=>"distance", :color=>Graphics.COLOR_WHITE, :locX=>133, :locY=>310, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_LARGE});
+
+            var rez_cmp_local_text_water = new WatchUi.Text({:identifier=>"water", :color=>Graphics.COLOR_WHITE, :locX=>133, :locY=>165, :text=>$.Rez.Strings.loading, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_LARGE});
+
+            var rez_cmp_local_text_hr = new WatchUi.Text({:identifier=>"hr", :color=>Graphics.COLOR_WHITE, :locX=>283, :locY=>165, :text=>$.Rez.Strings.loading, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_LARGE});
+
+            var rez_cmp_local_text_timer = new WatchUi.Text({:identifier=>"timer", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>60, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_LARGE});
+
+            var rez_cmp_local_text_pm25Units = new WatchUi.Text({:identifier=>"pm25Units", :color=>Graphics.COLOR_WHITE, :locX=>133, :locY=>230, :text=>$.Rez.Strings.microLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_distanceunits = new WatchUi.Text({:identifier=>"distanceunits", :color=>Graphics.COLOR_WHITE, :locX=>133, :locY=>360, :text=>$.Rez.Strings.ppmLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_hrUnits = new WatchUi.Text({:identifier=>"hrUnits", :color=>Graphics.COLOR_WHITE, :locX=>283, :locY=>230, :text=>$.Rez.Strings.hrUnits, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_elevationunits = new WatchUi.Text({:identifier=>"elevationunits", :color=>Graphics.COLOR_WHITE, :locX=>283, :locY=>360, :text=>$.Rez.Strings.ppmLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            return [rez_cmp_local_text_Title, rez_cmp_local_text_hrLabel, rez_cmp_local_text_elevation1, rez_cmp_local_text_pmLabel, rez_cmp_local_text_waterLabel, rez_cmp_local_text_timeLabel, rez_cmp_local_text_elevation, rez_cmp_local_text_distance, rez_cmp_local_text_water, rez_cmp_local_text_hr, rez_cmp_local_text_timer, rez_cmp_local_text_pm25Units, rez_cmp_local_text_distanceunits, rez_cmp_local_text_hrUnits, rez_cmp_local_text_elevationunits] as Array<WatchUi.Drawable>;
+        }
+
+        function Data(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_text_temp = new WatchUi.Text({:identifier=>"temp", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>60, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_LARGE});
+
+            var rez_cmp_local_text_hum = new WatchUi.Text({:identifier=>"hum", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>310, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_LARGE});
+
+            var rez_cmp_local_text_pm25 = new WatchUi.Text({:identifier=>"pm25", :color=>Graphics.COLOR_WHITE, :locX=>110, :locY=>165, :text=>$.Rez.Strings.loading, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_NUMBER_MILD});
+
+            var rez_cmp_local_text_co2 = new WatchUi.Text({:identifier=>"co2", :color=>Graphics.COLOR_WHITE, :locX=>290, :locY=>165, :text=>$.Rez.Strings.loading, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_NUMBER_MILD});
+
+            var rez_cmp_local_text_waterLabel = new WatchUi.Text({:identifier=>"waterLabel", :color=>Graphics.COLOR_WHITE, :locX=>100, :locY=>140, :text=>$.Rez.Strings.waterLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_humLabel = new WatchUi.Text({:identifier=>"humLabel", :color=>Graphics.COLOR_WHITE, :locX=>280, :locY=>140, :text=>$.Rez.Strings.humLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_distanceLabel = new WatchUi.Text({:identifier=>"distanceLabel", :color=>Graphics.COLOR_WHITE, :locX=>280, :locY=>140, :text=>$.Rez.Strings.distanceLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_tempLabel = new WatchUi.Text({:identifier=>"tempLabel", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>30, :text=>$.Rez.Strings.tempLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_pm25Units = new WatchUi.Text({:identifier=>"pm25Units", :color=>Graphics.COLOR_WHITE, :locX=>100, :locY=>230, :text=>$.Rez.Strings.ppmLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_co2Units = new WatchUi.Text({:identifier=>"co2Units", :color=>Graphics.COLOR_WHITE, :locX=>280, :locY=>230, :text=>$.Rez.Strings.ppmLabel, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_tempUnits = new WatchUi.Text({:identifier=>"tempUnits", :color=>Graphics.COLOR_WHITE, :locX=>100, :locY=>230, :text=>$.Rez.Strings.tempUnits, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_humUnits = new WatchUi.Text({:identifier=>"humUnits", :color=>Graphics.COLOR_WHITE, :locX=>280, :locY=>230, :text=>$.Rez.Strings.humUnits, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            return [rez_cmp_local_text_temp, rez_cmp_local_text_hum, rez_cmp_local_text_pm25, rez_cmp_local_text_co2, rez_cmp_local_text_waterLabel, rez_cmp_local_text_humLabel, rez_cmp_local_text_distanceLabel, rez_cmp_local_text_tempLabel, rez_cmp_local_text_pm25Units, rez_cmp_local_text_co2Units, rez_cmp_local_text_tempUnits, rez_cmp_local_text_humUnits] as Array<WatchUi.Drawable>;
+        }
+
+        function Score(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_text_summaryLabel = new WatchUi.Text({:identifier=>"summaryLabel", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>40, :text=>$.Rez.Strings.summary, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_endlabel = new WatchUi.Text({:identifier=>"endlabel", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>360, :text=>$.Rez.Strings.end, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_timeLabel = new WatchUi.Text({:identifier=>"timeLabel", :color=>Graphics.COLOR_WHITE, :locX=>190, :locY=>100, :text=>$.Rez.Strings.timeLbl, :justification=>Graphics.TEXT_JUSTIFY_RIGHT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_maxPM25Label = new WatchUi.Text({:identifier=>"maxPM25Label", :color=>Graphics.COLOR_WHITE, :locX=>190, :locY=>140, :text=>$.Rez.Strings.maxpm25, :justification=>Graphics.TEXT_JUSTIFY_RIGHT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_AQHILabel = new WatchUi.Text({:identifier=>"AQHILabel", :color=>Graphics.COLOR_WHITE, :locX=>190, :locY=>180, :text=>$.Rez.Strings.AQHILabel, :justification=>Graphics.TEXT_JUSTIFY_RIGHT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_personalAQHILabel = new WatchUi.Text({:identifier=>"personalAQHILabel", :color=>Graphics.COLOR_WHITE, :locX=>190, :locY=>220, :text=>$.Rez.Strings.personalAQHIabel, :justification=>Graphics.TEXT_JUSTIFY_RIGHT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_averageHR = new WatchUi.Text({:identifier=>"averageHR", :color=>Graphics.COLOR_WHITE, :locX=>190, :locY=>260, :text=>$.Rez.Strings.averageHR, :justification=>Graphics.TEXT_JUSTIFY_RIGHT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_time = new WatchUi.Text({:identifier=>"time", :color=>Graphics.COLOR_WHITE, :locX=>210, :locY=>100, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_water = new WatchUi.Text({:identifier=>"water", :color=>Graphics.COLOR_WHITE, :locX=>210, :locY=>140, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_distance = new WatchUi.Text({:identifier=>"distance", :color=>Graphics.COLOR_WHITE, :locX=>210, :locY=>180, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_elevation = new WatchUi.Text({:identifier=>"elevation", :color=>Graphics.COLOR_WHITE, :locX=>210, :locY=>220, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_hr = new WatchUi.Text({:identifier=>"hr", :color=>Graphics.COLOR_WHITE, :locX=>210, :locY=>260, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_microLabel = new WatchUi.Text({:identifier=>"microLabel", :color=>Graphics.COLOR_WHITE, :locX=>300, :locY=>140, :text=>$.Rez.Strings.microLabel, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_waterunits = new WatchUi.Text({:identifier=>"waterunits", :color=>Graphics.COLOR_WHITE, :locX=>300, :locY=>180, :text=>$.Rez.Strings.ppmLabel, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_elevationunits = new WatchUi.Text({:identifier=>"elevationunits", :color=>Graphics.COLOR_WHITE, :locX=>300, :locY=>220, :text=>$.Rez.Strings.ppmLabel, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_hrunits = new WatchUi.Text({:identifier=>"hrunits", :color=>Graphics.COLOR_WHITE, :locX=>300, :locY=>260, :text=>$.Rez.Strings.hrUnits, :justification=>Graphics.TEXT_JUSTIFY_LEFT, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_bitmap_actionMenu = new WatchUi.Bitmap({:identifier=>"actionMenu", :rezId=>$.Rez.Drawables.actionMenu, :locX=>360, :locY=>77});
+
+            return [rez_cmp_local_text_summaryLabel, rez_cmp_local_text_endlabel, rez_cmp_local_text_timeLabel, rez_cmp_local_text_maxPM25Label, rez_cmp_local_text_AQHILabel, rez_cmp_local_text_personalAQHILabel, rez_cmp_local_text_averageHR, rez_cmp_local_text_time, rez_cmp_local_text_water, rez_cmp_local_text_distance, rez_cmp_local_text_elevation, rez_cmp_local_text_hr, rez_cmp_local_text_microLabel, rez_cmp_local_text_waterunits, rez_cmp_local_text_elevationunits, rez_cmp_local_text_hrunits, rez_cmp_local_bitmap_actionMenu] as Array<WatchUi.Drawable>;
+        }
+
+        function UserPrompt(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_text_pAQHI = new WatchUi.Text({:identifier=>"pAQHI", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>150, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            var rez_cmp_local_text_blurb = new WatchUi.Text({:identifier=>"blurb", :color=>Graphics.COLOR_WHITE, :locX=>(416 * 0.5), :locY=>200, :text=>$.Rez.Strings.end, :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_XTINY});
+
+            return [rez_cmp_local_text_pAQHI, rez_cmp_local_text_blurb] as Array<WatchUi.Drawable>;
+        }
+
+        function ErrorLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_text_Message = new WatchUi.Text({:identifier=>"Message", :color=>0xFFFFFF, :locX=>(416 * 0.5), :locY=>((416 - dc.getFontHeight(Graphics.FONT_MEDIUM)) * 0.5), :justification=>Graphics.TEXT_JUSTIFY_CENTER, :font=>Graphics.FONT_MEDIUM});
+
+            return [rez_cmp_local_text_Message] as Array<WatchUi.Drawable>;
+        }
+    } // Layouts
+
+    module Menus {
+        class MainMenu extends WatchUi.Menu {
+            function initialize() {
+                Menu.initialize();
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_label_1) as String), :item_1);
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_label_2) as String), :item_2);
+            }
+        }
+    } // Menus
+
+    module Strings {
+        (:initialized) var connectString1 as ResourceId;
+        (:initialized) var connectString2 as ResourceId;
+        (:initialized) var distanceLabel as ResourceId;
+        (:initialized) var titleLabel as ResourceId;
+        (:initialized) var humLabel as ResourceId;
+        (:initialized) var CO2_graph_label as ResourceId;
+        (:initialized) var timeLbl as ResourceId;
+        (:initialized) var waterLabel as ResourceId;
+        (:initialized) var aqhi_label as ResourceId;
+        (:initialized) var error as ResourceId;
+        (:initialized) var AQHILabel as ResourceId;
+        (:initialized) var air_exposure_units as ResourceId;
+        (:initialized) var connectString3 as ResourceId;
+        (:initialized) var AppName as ResourceId;
+        (:initialized) var goToPhone as ResourceId;
+        (:initialized) var temp_label as ResourceId;
+        (:initialized) var end as ResourceId;
+        (:initialized) var tempLabel as ResourceId;
+        (:initialized) var tempUnits as ResourceId;
+        (:initialized) var humUnits as ResourceId;
+        (:initialized) var PM25_label as ResourceId;
+        (:initialized) var temp_graph_label as ResourceId;
+        (:initialized) var ppmLabel as ResourceId;
+        (:initialized) var PM25_units as ResourceId;
+        (:initialized) var humidity_graph_label as ResourceId;
+        (:initialized) var elevation as ResourceId;
+        (:initialized) var summary as ResourceId;
+        (:initialized) var CO2_label as ResourceId;
+        (:initialized) var PM25_graph_label as ResourceId;
+        (:initialized) var temp_units as ResourceId;
+        (:initialized) var hrLabel as ResourceId;
+        (:initialized) var microLabel as ResourceId;
+        (:initialized) var CO2_units as ResourceId;
+        (:initialized) var humidity_units as ResourceId;
+        (:initialized) var air_exposure_label as ResourceId;
+        (:initialized) var humidity_label as ResourceId;
+        (:initialized) var loading as ResourceId;
+        (:initialized) var personalAQHIabel as ResourceId;
+        (:initialized) var air_exposure_graph_label as ResourceId;
+        (:initialized) var hrUnits as ResourceId;
+        (:initialized) var menu_label_1 as ResourceId;
+        (:initialized) var maxpm25 as ResourceId;
+        (:initialized) var menu_label_2 as ResourceId;
+        (:initialized) var averageHR as ResourceId;
+        (:initialized) var timeLabel as ResourceId;
+    } // Strings
+
+    module Styles {
+        module prompt_font_enhanced_readability__body_with_title {
+            const exclude as Boolean = true;
+        } // prompt_font_enhanced_readability__body_with_title
+
+        module system_size__menu_header {
+            const width as Number = 416;
+            const height as Number = 130;
+        } // system_size__menu_header
+
+        module system_loc__hint_button_left_bottom {
+            const x as Number = 16;
+            const y as Number = 275;
+        } // system_loc__hint_button_left_bottom
+
+        module prompt_font_enhanced_readability__body_no_title {
+            const exclude as Boolean = true;
+        } // prompt_font_enhanced_readability__body_no_title
+
+        module prompt_loc__body_no_title {
+            const x as Number = 42;
+            const y as Number = 42;
+        } // prompt_loc__body_no_title
+
+        module system_icon_dark__about {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__about.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__about
+
+        module system_icon_light__question {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__question.svg";
+            const dithering as String = "none";
+        } // system_icon_light__question
+
+        module system_loc__hint_button_left_top {
+            const exclude as Boolean = true;
+        } // system_loc__hint_button_left_top
+
+        module prompt_font__title {
+            const justification = Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER;
+            const font = Graphics.FONT_XTINY;
+        } // prompt_font__title
+
+        module system_icon_dark__discard {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__discard.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__discard
+
+        module system_size__menu_item {
+            const width as Number = 416;
+            const height as Number = 109;
+        } // system_size__menu_item
+
+        module system_color_dark__text {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // system_color_dark__text
+
+        module system_icon_destructive__discard {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__discard.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__discard
+
+        module system_icon_dark__hint_action_menu {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_action_menu
+
+        module prompt_size__title {
+            const width as Number = 333;
+            const height as Number = 63;
+        } // prompt_size__title
+
+        module confirmation_font__body {
+            const justification = Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER;
+            const font = Graphics.FONT_TINY;
+        } // confirmation_font__body
+
+        module system_color_dark__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // system_color_dark__background
+
+        module system_icon_destructive__hint_button_left_top {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__hint_button_left_top.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_left_top
+
+        module system_size__launch_icon {
+            const scaleX as Number = 60;
+            const scaleY as Number = 60;
+            const scaleRelativeTo as String = "screen";
+        } // system_size__launch_icon
+
+        module confirmation_input__confirm {
+            const button = WatchUi.KEY_ENTER;
+        } // confirmation_input__confirm
+
+        module prompt_font__body_with_title {
+            const justification = Graphics.TEXT_JUSTIFY_CENTER;
+            const font = Graphics.FONT_TINY;
+        } // prompt_font__body_with_title
+
+        module confirmation_loc__body {
+            const x as Number = 83;
+            const y as Number = 83;
+        } // confirmation_loc__body
+
+        module system_icon_destructive__hint_button_left_bottom {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__hint_button_left_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_left_bottom
+
+        module prompt_color_dark__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // prompt_color_dark__background
+
+        module system_icon_destructive__hint_action_menu {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_action_menu
+
+        module system_loc__hint_action_menu {
+            const x as Number = 360;
+            const y as Number = 77;
+        } // system_loc__hint_action_menu
+
+        module confirmation_icon__hint_confirm {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_completion.svg";
+            const dithering as String = "none";
+        } // confirmation_icon__hint_confirm
+
+        module system_loc__hint_button_left_middle {
+            const x as Number = 4;
+            const y as Number = 173;
+        } // system_loc__hint_button_left_middle
+
+        module prompt_size__body_no_title {
+            const width as Number = 333;
+            const height as Number = 333;
+        } // prompt_size__body_no_title
+
+        module system_icon_light__hint_button_left_top {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__hint_button_left_top.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_left_top
+
+        module prompt_color_light__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // prompt_color_light__background
+
+        module confirmation_input__delete {
+            const button = WatchUi.KEY_ENTER;
+        } // confirmation_input__delete
+
+        module system_icon_dark__hint_button_left_top {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__hint_button_left_top.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_left_top
+
+        module system_input__action_menu {
+            const button = WatchUi.KEY_ENTER;
+        } // system_input__action_menu
+
+        module system_icon_light__save {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__save.svg";
+            const dithering as String = "none";
+        } // system_icon_light__save
+
+        module prompt_color_light__body {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // prompt_color_light__body
+
+        module system_loc__subwindow {
+            const exclude as Boolean = true;
+        } // system_loc__subwindow
+
+        module system_icon_light__warning {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__warning.svg";
+            const dithering as String = "none";
+        } // system_icon_light__warning
+
+        module confirmation_color_light__body {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // confirmation_color_light__body
+
+        module confirmation_icon_light__hint_keep {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_keep.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_light__hint_keep
+
+        module activity_color_light__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // activity_color_light__background
+
+        module system_icon_positive__hint_button_right_top {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_positive__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_right_top
+
+        module system_size__screen {
+            const width as Number = 416;
+            const height as Number = 416;
+        } // system_size__screen
+
+        module system_icon_destructive__hint_button_right_bottom {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__hint_button_right_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_right_bottom
+
+        module system_color_light__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // system_color_light__background
+
+        module system_icon_destructive__hint_button_right_top {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_right_top
+
+        module confirmation_loc__hint_confirm {
+            const x as Number = 338;
+            const y as Number = 77;
+        } // confirmation_loc__hint_confirm
+
+        module activity_color_dark__text {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // activity_color_dark__text
+
+        module confirmation_input__keep {
+            const button = WatchUi.KEY_DOWN;
+        } // confirmation_input__keep
+
+        module prompt_loc__body_with_title {
+            const x as Number = 42;
+            const y as Number = 125;
+        } // prompt_loc__body_with_title
+
+        module system_icon_dark__search {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__search.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__search
+
+        module activity_color_light__text {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // activity_color_light__text
+
+        module confirmation_icon__hint_keep {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_keep.svg";
+            const dithering as String = "none";
+        } // confirmation_icon__hint_keep
+
+        module system_icon_dark__save {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__save.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__save
+
+        module system_icon_destructive__hint_button_left_middle {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__hint_button_left_middle.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_left_middle
+
+        module system_icon_light__search {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__search.svg";
+            const dithering as String = "none";
+        } // system_icon_light__search
+
+        module system_icon_dark__hint_button_left_bottom {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__hint_button_left_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_left_bottom
+
+        module system_icon_positive__hint_button_left_top {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_positive__hint_button_left_top.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_left_top
+
+        module system_loc__hint_button_right_bottom {
+            const x as Number = 360;
+            const y as Number = 275;
+        } // system_loc__hint_button_right_bottom
+
+        module confirmation_icon_dark__hint_reject {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_reject.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_dark__hint_reject
+
+        module confirmation_color_dark__body {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // confirmation_color_dark__body
+
+        module confirmation_icon_light__hint_confirm {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_completion.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_light__hint_confirm
+
+        module prompt_color_dark__title {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // prompt_color_dark__title
+
+        module system_icon_destructive__cancel {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__cancel.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__cancel
+
+        module system_icon_light__hint_button_right_bottom {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__hint_button_right_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_right_bottom
+
+        module prompt_loc__title {
+            const x as Number = 42;
+            const y as Number = 30;
+        } // prompt_loc__title
+
+        module confirmation_font_enhanced_readability__body {
+            const exclude as Boolean = true;
+        } // confirmation_font_enhanced_readability__body
+
+        module prompt_color_light__title {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // prompt_color_light__title
+
+        module system_icon_dark__hint_button_right_top {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_right_top
+
+        module system_icon_dark__hint_button_left_middle {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__hint_button_left_middle.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_left_middle
+
+        module confirmation_icon_dark__hint_keep {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_keep.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_dark__hint_keep
+
+        module system_icon_light__cancel {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__cancel.svg";
+            const dithering as String = "none";
+        } // system_icon_light__cancel
+
+        module confirmation_icon_light__hint_reject {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_reject.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_light__hint_reject
+
+        module system_icon_light__about {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__about.svg";
+            const dithering as String = "none";
+        } // system_icon_light__about
+
+        module system_size__toast_icon {
+            const scaleX as Number = 40;
+            const scaleY as Number = 40;
+            const scaleRelativeTo as String = "screen";
+        } // system_size__toast_icon
+
+        module system_icon_dark__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_icon_dark__hint_button_right_middle
+
+        module confirmation_icon__hint_reject {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_reject.svg";
+            const dithering as String = "none";
+        } // confirmation_icon__hint_reject
+
+        module system_icon_light__hint_action_menu {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_action_menu
+
+        module system_icon_light__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_icon_light__hint_button_right_middle
+
+        module system_icon_destructive__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_icon_destructive__hint_button_right_middle
+
+        module confirmation_loc__hint_reject {
+            const x as Number = 16;
+            const y as Number = 275;
+            const horizontalJustification as String = "left";
+        } // confirmation_loc__hint_reject
+
+        module confirmation_icon_dark__hint_delete {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_delete.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_dark__hint_delete
+
+        module activity_color_dark__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // activity_color_dark__background
+
+        module system_icon_light__hint_button_left_bottom {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__hint_button_left_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_left_bottom
+
+        module system_icon_positive__hint_button_left_middle {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_positive__hint_button_left_middle.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_left_middle
+
+        module system_size__menu_icon {
+            const scaleX as Number = 60;
+            const scaleY as Number = 60;
+            const scaleRelativeTo as String = "screen";
+        } // system_size__menu_icon
+
+        module system_icon_destructive__warning {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_destructive__warning.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__warning
+
+        module system_loc__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_loc__hint_button_right_middle
+
+        module system_icon_dark__cancel {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__cancel.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__cancel
+
+        module prompt_size__body_with_title {
+            const width as Number = 333;
+            const height as Number = 250;
+        } // prompt_size__body_with_title
+
+        module system_loc__hint_button_right_top {
+            const x as Number = 360;
+            const y as Number = 77;
+        } // system_loc__hint_button_right_top
+
+        module system_color_light__text {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // system_color_light__text
+
+        module system_icon_light__check {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__check.svg";
+            const dithering as String = "none";
+        } // system_icon_light__check
+
+        module confirmation_input__reject {
+            const button = WatchUi.KEY_DOWN;
+        } // confirmation_input__reject
+
+        module system_icon_light__revert {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__revert.svg";
+            const dithering as String = "none";
+        } // system_icon_light__revert
+
+        module system_size__subwindow {
+            const exclude as Boolean = true;
+        } // system_size__subwindow
+
+        module system_icon_positive__hint_button_left_bottom {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_positive__hint_button_left_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_left_bottom
+
+        module system_icon_dark__check {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__check.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__check
+
+        module confirmation_loc__hint_keep {
+            const x as Number = 16;
+            const y as Number = 275;
+            const horizontalJustification as String = "left";
+        } // confirmation_loc__hint_keep
+
+        module confirmation_loc__hint_delete {
+            const x as Number = 338;
+            const y as Number = 77;
+        } // confirmation_loc__hint_delete
+
+        module system_icon_positive__hint_action_menu {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_positive__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_action_menu
+
+        module system_icon_positive__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_icon_positive__hint_button_right_middle
+
+        module system_icon_light__hint_button_left_middle {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__hint_button_left_middle.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_left_middle
+
+        module system_icon_dark__hint_button_right_bottom {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__hint_button_right_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_right_bottom
+
+        module system_icon_positive__hint_button_right_bottom {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_positive__hint_button_right_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_right_bottom
+
+        module system_icon_dark__revert {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__revert.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__revert
+
+        module confirmation_icon_light__hint_delete {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_delete.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_light__hint_delete
+
+        module system_icon_dark__question {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__question.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__question
+
+        module system_icon_light__discard {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__discard.svg";
+            const dithering as String = "none";
+        } // system_icon_light__discard
+
+        module device_info {
+            const screenWidth as Number = 416;
+            const screenShape = Toybox.System.SCREEN_SHAPE_ROUND;
+            const hasNightMode as Boolean = false;
+            const hasGpu as Boolean = true;
+            const screenHeight as Number = 416;
+            const hasTouchScreen as Boolean = true;
+            const hasEnhancedReadabilityMode as Boolean = false;
+        } // device_info
+
+        module confirmation_icon_dark__hint_confirm {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_completion.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_dark__hint_confirm
+
+        module prompt_font__body_no_title {
+            const justification = Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER;
+            const font = Graphics.FONT_TINY;
+        } // prompt_font__body_no_title
+
+        module prompt_size__title_icon {
+            const scaleX as Float = 0.15;
+            const scaleRelativeTo as String = "screen";
+        } // prompt_size__title_icon
+
+        module system_icon_dark__warning {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_dark__warning.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__warning
+
+        module prompt_loc__title_icon {
+            const x as Number = 208;
+            const y as Number = 62;
+            const horizontalJustification as String = "center";
+            const verticalJustification as String = "center";
+        } // prompt_loc__title_icon
+
+        module prompt_font_enhanced_readability__title {
+            const exclude as Boolean = true;
+        } // prompt_font_enhanced_readability__title
+
+        module prompt_color_dark__body {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // prompt_color_dark__body
+
+        module confirmation_icon__hint_delete {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\confirmation_icon__hint_delete.svg";
+            const dithering as String = "none";
+        } // confirmation_icon__hint_delete
+
+        module system_icon_light__hint_button_right_top {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_light__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_right_top
+
+        module confirmation_size__body {
+            const width as Number = 250;
+            const height as Number = 250;
+        } // confirmation_size__body
+
+        module system_icon_positive__check {
+            const filename as String = "C:\\Users\\Alexander\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2pro47mm\\system_icon_positive__check.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__check
+    } // Styles
+} // Rez

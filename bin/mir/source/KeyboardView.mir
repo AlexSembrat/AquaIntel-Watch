@@ -1,0 +1,337 @@
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 7; ]
+import Toybox.Graphics;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 8; ]
+import Toybox.Lang;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 9; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 12; ]
+class KeyboardView extends WatchUi.View{
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 12; ]
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 12; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 13; @position = 16; ]
+    private
+    var _dataModel as DeviceDataModel;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 15; @position = 16; ]
+    private
+    var _text as String = "Enter\nEstimated\nDuration\n(mins)";
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 18; @position = 16; ]
+    private
+    var _duration as String;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 19; @position = 16; ]
+    private
+    var _predicting = false;
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 20; @position = 16; ]
+    private
+    var _done = true;
+    //! Constructor
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 23; ]
+    public
+    function initialize(dataModel as DeviceDataModel) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_23_61_26_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 24 8 ]
+        %tmp.1 = getm $.Toybox.WatchUi;
+        %tmp.2 = getv %tmp.1 :View;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 25 8 ]
+        %tmp.5 = lgetv %dataModel;
+        putv self :_dataModel %tmp.5;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_23_61_26_4_stop:
+    }
+    //! Load your resources here
+    //! @param dc Device context
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 30; ]
+    public
+    function onLayout(dc as Dc) as Void {
+    }
+    //! Restore the state of the app and prepare the view to be shown
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 34; ]
+    public
+    function onShow() as Void {
+    }
+    //! Update the view
+    //! @param dc Device context
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 39; ]
+    public
+    function onUpdate(dc as Dc) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_39_47_85_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 40 8 ]
+        %tmp.1 = lgetv %dc;
+        %tmp.2 = getv function %tmp.1 :setColor;
+        %tmp.3 = getm $.Toybox.Graphics;
+        %tmp.4 = getv %tmp.3 :COLOR_BLACK;
+        %tmp.5 = getm $.Toybox.Graphics;
+        %tmp.6 = getv %tmp.5 :COLOR_BLACK;
+        invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 41 8 ]
+        %tmp.7 = lgetv %dc;
+        %tmp.8 = getv function %tmp.7 :clear;
+        invoke %tmp.7 %tmp.8();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 42 8 ]
+        %tmp.9 = lgetv %dc;
+        %tmp.10 = getv function %tmp.9 :setColor;
+        %tmp.11 = getm $.Toybox.Graphics;
+        %tmp.12 = getv %tmp.11 :COLOR_WHITE;
+        %tmp.13 = getm $.Toybox.Graphics;
+        %tmp.14 = getv %tmp.13 :COLOR_TRANSPARENT;
+        invoke %tmp.9 %tmp.10(%tmp.12, %tmp.14);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 43 8 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_43_8_47_8_if_stmt:
+        %tmp.16 = getm $.Toybox.WatchUi;
+        %tmp.18 = const :TextPicker;
+        %tmp.19 = canhazplz %tmp.16 %tmp.18;
+        bf %tmp.19 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_43_8_47_8_if_false;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_43_8_47_8_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_43_37_45_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 44 12 ]
+        %tmp.20 = lgetv %dc;
+        %tmp.21 = getv function %tmp.20 :drawText;
+        %tmp.22 = lgetv %dc;
+        %tmp.23 = getv function %tmp.22 :getWidth;
+        %tmp.24 = invoke %tmp.22 %tmp.23();
+        %tmp.25 = 2;
+        %tmp.26 = div %tmp.24 %tmp.25;
+        %tmp.27 = lgetv %dc;
+        %tmp.28 = getv function %tmp.27 :getHeight;
+        %tmp.29 = invoke %tmp.27 %tmp.28();
+        %tmp.30 = 2;
+        %tmp.31 = div %tmp.29 %tmp.30;
+        %tmp.32 = getm $.Toybox.Graphics;
+        %tmp.33 = getv %tmp.32 :FONT_SMALL;
+        %tmp.35 = getv ? :_text;
+        %tmp.36 = getm $.Toybox.Graphics;
+        %tmp.37 = getv %tmp.36 :TEXT_JUSTIFY_CENTER;
+        %tmp.38 = getm $.Toybox.Graphics;
+        %tmp.39 = getv %tmp.38 :TEXT_JUSTIFY_VCENTER;
+        %tmp.40 = bitor %tmp.37 %tmp.39;
+        invoke %tmp.20 %tmp.21(%tmp.26, %tmp.31, %tmp.33, %tmp.35, %tmp.40);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_43_37_45_8_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_43_8_47_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_43_8_47_8_if_false:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_45_15_47_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 46 12 ]
+        %tmp.41 = lgetv %dc;
+        %tmp.42 = getv function %tmp.41 :drawText;
+        %tmp.43 = lgetv %dc;
+        %tmp.44 = getv function %tmp.43 :getWidth;
+        %tmp.45 = invoke %tmp.43 %tmp.44();
+        %tmp.46 = 2;
+        %tmp.47 = div %tmp.45 %tmp.46;
+        %tmp.48 = lgetv %dc;
+        %tmp.49 = getv function %tmp.48 :getHeight;
+        %tmp.50 = invoke %tmp.48 %tmp.49();
+        %tmp.51 = 2;
+        %tmp.52 = div %tmp.50 %tmp.51;
+        %tmp.53 = getm $.Toybox.Graphics;
+        %tmp.54 = getv %tmp.53 :FONT_SMALL;
+        %tmp.55 = "TextPicker not\nsupported";
+        %tmp.56 = getm $.Toybox.Graphics;
+        %tmp.57 = getv %tmp.56 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.41 %tmp.42(%tmp.47, %tmp.52, %tmp.54, %tmp.55, %tmp.57);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_45_15_47_8_stop:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_43_8_47_8_if_end:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 49 8 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_8_84_8_if_stmt:
+        %tmp.59 = getv ? :_predicting;
+        bf %tmp.59 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_8_84_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_8_84_8_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_23_84_8_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 51 12 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_23_84_8_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_23_84_8_stop" ]
+        %profile.1 = local;
+        %tmp.61 = getv ? :_dataModel;
+        %tmp.62 = getv function %tmp.61 :getActiveProfile;
+        %tmp.63 = invoke %tmp.61 %tmp.62();
+        lputv %profile.1 %tmp.63;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 53 12 ]
+        %tmp.64 = lgetv %profile.1;
+        %tmp.65 = getv function %tmp.64 :sendDurationData;
+        %tmp.67 = getv ? :_duration;
+        invoke %tmp.64 %tmp.65(%tmp.67);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 54 12 ]
+        [ "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_23_84_8_start" "C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_23_84_8_stop" ]
+        %prediction.2 = local;
+        %tmp.68 = lgetv %profile.1;
+        %tmp.69 = getv function %tmp.68 :getPrediction;
+        %tmp.70 = invoke %tmp.68 %tmp.69();
+        lputv %prediction.2 %tmp.70;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 68 12 ]
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_68_12_83_12_if_stmt:
+        %tmp.71 = lgetv %profile.1;
+        %tmp.72 = getv function %tmp.71 :getPrediction;
+        %tmp.73 = invoke %tmp.71 %tmp.72();
+        %tmp.74 = null;
+        %tmp.75 = eq %tmp.73 %tmp.74;
+        bf %tmp.75 @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_68_12_83_12_if_false;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_68_12_83_12_if_true:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_68_47_74_12_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 69 16 ]
+        %tmp.76 = "Calculating Your\nPrediction...";
+        putv self :_text %tmp.76;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 70 16 ]
+        %tmp.77 = lgetv %dc;
+        %tmp.78 = getv function %tmp.77 :setColor;
+        %tmp.79 = getm $.Toybox.Graphics;
+        %tmp.80 = getv %tmp.79 :COLOR_BLACK;
+        %tmp.81 = getm $.Toybox.Graphics;
+        %tmp.82 = getv %tmp.81 :COLOR_BLACK;
+        invoke %tmp.77 %tmp.78(%tmp.80, %tmp.82);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 71 16 ]
+        %tmp.83 = lgetv %dc;
+        %tmp.84 = getv function %tmp.83 :clear;
+        invoke %tmp.83 %tmp.84();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 72 16 ]
+        %tmp.85 = lgetv %dc;
+        %tmp.86 = getv function %tmp.85 :setColor;
+        %tmp.87 = getm $.Toybox.Graphics;
+        %tmp.88 = getv %tmp.87 :COLOR_WHITE;
+        %tmp.89 = getm $.Toybox.Graphics;
+        %tmp.90 = getv %tmp.89 :COLOR_TRANSPARENT;
+        invoke %tmp.85 %tmp.86(%tmp.88, %tmp.90);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 73 16 ]
+        %tmp.91 = lgetv %dc;
+        %tmp.92 = getv function %tmp.91 :drawText;
+        %tmp.93 = lgetv %dc;
+        %tmp.94 = getv function %tmp.93 :getWidth;
+        %tmp.95 = invoke %tmp.93 %tmp.94();
+        %tmp.96 = 2;
+        %tmp.97 = div %tmp.95 %tmp.96;
+        %tmp.98 = lgetv %dc;
+        %tmp.99 = getv function %tmp.98 :getHeight;
+        %tmp.100 = invoke %tmp.98 %tmp.99();
+        %tmp.101 = 2;
+        %tmp.102 = div %tmp.100 %tmp.101;
+        %tmp.103 = getm $.Toybox.Graphics;
+        %tmp.104 = getv %tmp.103 :FONT_SMALL;
+        %tmp.106 = getv ? :_text;
+        %tmp.107 = getm $.Toybox.Graphics;
+        %tmp.108 = getv %tmp.107 :TEXT_JUSTIFY_CENTER;
+        %tmp.109 = getm $.Toybox.Graphics;
+        %tmp.110 = getv %tmp.109 :TEXT_JUSTIFY_VCENTER;
+        %tmp.111 = bitor %tmp.108 %tmp.110;
+        invoke %tmp.91 %tmp.92(%tmp.97, %tmp.102, %tmp.104, %tmp.106, %tmp.111);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_68_47_74_12_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_68_12_83_12_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_68_12_83_12_if_false:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_75_16_83_12_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 76 12 ]
+        %tmp.112 = "Your Prediction is:\n";
+        %tmp.114 = lgetv %prediction.2;
+        %tmp.115 = add %tmp.112 %tmp.114;
+        %tmp.116 = " ml";
+        %tmp.117 = add %tmp.115 %tmp.116;
+        putv self :_text %tmp.117;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 77 12 ]
+        %tmp.118 = lgetv %dc;
+        %tmp.119 = getv function %tmp.118 :setColor;
+        %tmp.120 = getm $.Toybox.Graphics;
+        %tmp.121 = getv %tmp.120 :COLOR_BLACK;
+        %tmp.122 = getm $.Toybox.Graphics;
+        %tmp.123 = getv %tmp.122 :COLOR_BLACK;
+        invoke %tmp.118 %tmp.119(%tmp.121, %tmp.123);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 78 12 ]
+        %tmp.124 = lgetv %dc;
+        %tmp.125 = getv function %tmp.124 :clear;
+        invoke %tmp.124 %tmp.125();
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 79 12 ]
+        %tmp.126 = lgetv %dc;
+        %tmp.127 = getv function %tmp.126 :setColor;
+        %tmp.128 = getm $.Toybox.Graphics;
+        %tmp.129 = getv %tmp.128 :COLOR_WHITE;
+        %tmp.130 = getm $.Toybox.Graphics;
+        %tmp.131 = getv %tmp.130 :COLOR_TRANSPARENT;
+        invoke %tmp.126 %tmp.127(%tmp.129, %tmp.131);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 80 12 ]
+        %tmp.132 = lgetv %dc;
+        %tmp.133 = getv function %tmp.132 :drawText;
+        %tmp.134 = lgetv %dc;
+        %tmp.135 = getv function %tmp.134 :getWidth;
+        %tmp.136 = invoke %tmp.134 %tmp.135();
+        %tmp.137 = 2;
+        %tmp.138 = div %tmp.136 %tmp.137;
+        %tmp.139 = lgetv %dc;
+        %tmp.140 = getv function %tmp.139 :getHeight;
+        %tmp.141 = invoke %tmp.139 %tmp.140();
+        %tmp.142 = 2;
+        %tmp.143 = div %tmp.141 %tmp.142;
+        %tmp.144 = getm $.Toybox.Graphics;
+        %tmp.145 = getv %tmp.144 :FONT_SMALL;
+        %tmp.147 = getv ? :_text;
+        %tmp.148 = getm $.Toybox.Graphics;
+        %tmp.149 = getv %tmp.148 :TEXT_JUSTIFY_CENTER;
+        %tmp.150 = getm $.Toybox.Graphics;
+        %tmp.151 = getv %tmp.150 :TEXT_JUSTIFY_VCENTER;
+        %tmp.152 = bitor %tmp.149 %tmp.151;
+        invoke %tmp.132 %tmp.133(%tmp.138, %tmp.143, %tmp.145, %tmp.147, %tmp.152);
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 82 12 ]
+        %tmp.153 = true;
+        putv self :_done %tmp.153;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_75_16_83_12_stop:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_68_12_83_12_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_23_84_8_stop:
+        goto @C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_8_84_8_if_end;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_49_8_84_8_if_end:
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_39_47_85_4_stop:
+    }
+    //! Called when this View is removed from the screen. Save the
+    //! state of your app here.
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 89; ]
+    public
+    function onHide() as Void {
+    }
+    //! Set text to show
+    //! @param text The text to show
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 94; ]
+    public
+    function setText(text as String) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_94_52_96_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 95 8 ]
+        %tmp.2 = lgetv %text;
+        putv self :_text %tmp.2;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_94_52_96_4_stop:
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 98; ]
+    public
+    function setPredicting(bool as Boolean) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_98_58_100_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 99 8 ]
+        %tmp.2 = lgetv %bool;
+        putv self :_predicting %tmp.2;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_98_58_100_4_stop:
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 102; ]
+    public
+    function getDone() as Boolean {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_102_40_104_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 103 8 ]
+        %tmp.2 = getv ? :_done;
+        ret %tmp.2;
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_102_40_104_4_stop:
+    }
+    [ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 106; ]
+    public
+    function saveText(text as String) as Void {
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_106_53_137_4_start:
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 135 8 ]
+        %tmp.1 = lgetv %text;
+        %tmp.2 = getv function %tmp.1 :toNumber;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        putv self :_duration %tmp.3;
+[ "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc" 136 8 ]
+        %tmp.5 = getv ? :System;
+        %tmp.6 = getv function %tmp.5 :println;
+        %tmp.7 = "Duration ";
+        %tmp.9 = getv ? :_duration;
+        %tmp.10 = add %tmp.7 %tmp.9;
+        invoke %tmp.5 %tmp.6(%tmp.10);
+C_Users_Alexander_AppData_Roaming_Garmin_ConnectIQ_Sdks_connectiq_sdk_win_7_3_1_2024_09_23_df7b5816a_samples_NordicThingy52_source_KeyboardView_mc_106_53_137_4_stop:
+    }
+}
+[ @file = "C:\Users\Alexander\AppData\Roaming\Garmin\ConnectIQ\Sdks\connectiq-sdk-win-7.3.1-2024-09-23-df7b5816a\samples\NordicThingy52\source\KeyboardView.mc"; @line = 7; ]
+<init> {
+}

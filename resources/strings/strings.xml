@@ -1,5 +1,37 @@
 <strings>
-    <string id="AppName">Nordic Thingy</string>
+    <string id="AppName">AquaIntel</string>
     <string id="menu_label_1">Start Scanning</string>
     <string id="menu_label_2">Stop Scanning</string>
+
+    <string id="titleLabel">Four Week\nSummary</string>
+    <string id="hrLabel">HEART RATE</string>
+    <string id="distanceLabel">DISTANCE</string>
+    <string id="waterLabel">H20</string>
+    <string id="tempLabel">TEMP.</string>
+    <string id="humLabel">HUMIDITY</string>
+    <string id="timeLabel">TIME</string>
+    <string id="ppmLabel">m</string>
+    <string id="microLabel">ml</string>
+    <string id="tempUnits">Celsius</string>
+    <string id="humUnits">%</string>
+    <string id="averageHR">Mean HR</string>
+    <string id="elevation">ELEVATION</string>
+    <string id="hrUnits">bpm</string>
+
+    <string id="timeLbl">Time</string>
+    <string id="maxpm25">H20</string>
+    <string id="AQHILabel">Distance</string>
+    <string id="personalAQHIabel">Elevation</string>
+    <string id="summary">Summary</string>
+
+    <string id="end">Stay Hydrated!</string> 
+
+    <string id="connectString1">Please connect your</string>
+    <string id="connectString2">phone and open the</string>
+    <string id="connectString3">Connect Mobile App</string>
+    
+    <string id="goToPhone">Open the</string>   
+    
+    <string id="loading">--</string>
+    <string id="error">Error: </string>
 </strings>
