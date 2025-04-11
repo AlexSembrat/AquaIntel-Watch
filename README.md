@@ -1,3 +1,5 @@
 # AquaIntel Watch App
 
-Garmin watch app for AquaIntel Capstone Project.
+Garmin Watch app for AquaIntel Capstone Project.
+
+To compile this code you will need to download the Garmin Connect IQ SDK
